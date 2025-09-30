@@ -1,7 +1,8 @@
 // package Assignment3_studentmangment;
 
 import java.util.*;
-
+// 
+// classes Class,Address,Student
 class Class {
     int id;
     String name;
@@ -29,7 +30,6 @@ class Student {
         this.age = age;
     }
 }
-
 class Address {
     int id;
     int pincode;
@@ -73,7 +73,7 @@ class studentmanagmentsystem {
         students.add(s);
         addresses.addAll(a);
     }
-
+// Computes rank
     void rank() {
         students.sort((s1, s2) -> s2.marks - s1.marks);
         int rank = 1;
@@ -87,7 +87,7 @@ class studentmanagmentsystem {
             }
         }
     }
-
+// finds by city 
     void findbycity(String city) {
         city = city.toLowerCase();
         if (city == null || city.isEmpty()) {
@@ -105,7 +105,7 @@ class studentmanagmentsystem {
             }
         }
     }
-
+// finds by pincode 
     void findbypincode(int pincode) {
         System.out.println("Students with pincode " + pincode + ": ");
         for (Address a : addresses) {
@@ -118,7 +118,7 @@ class studentmanagmentsystem {
             }
         }
     }
-
+// finds students by class id
     void findbyclass(int class_id) {
         System.out.println("Students in class id " + class_id + ": ");
         String x = null;
@@ -134,7 +134,7 @@ class studentmanagmentsystem {
             }
         }
     }
-
+// prints passed students
     void ispassed() {
         System.out.println("Students who passed: ");
         for (Student s : students) {
@@ -143,7 +143,7 @@ class studentmanagmentsystem {
             }
         }
     }
-
+// prints failed students
     void failed() {
         System.out.println("Students who failed: ");
         for (Student s : students) {
@@ -152,13 +152,14 @@ class studentmanagmentsystem {
             }
         }
     }
+    // method to delete students
 
     void deletestudent(int student_id) {
         students.removeIf(s -> s.id == student_id);
         addresses.removeIf(a -> a.student_id == student_id);
         System.out.println("Student with id " + student_id + " deleted");
     }
-
+// pagination for marks
     void pagination_marks(int start, int end) {
         Collections.sort(students, (s1, s2) -> s2.marks - s1.marks);
         System.out.println("Students from index " + start + " to " + end + ": ");
@@ -170,7 +171,7 @@ class studentmanagmentsystem {
             }
         }
     }
-
+// return pagination according to names
     void pagination_name(int start, int end) {
         Collections.sort(students, (s1, s2) -> s2.name.compareTo(s1.name));
         System.out.println("Students from index " + start + " to " + end + ": ");
@@ -180,6 +181,7 @@ class studentmanagmentsystem {
         }
 
     }
+    // method to print table
 
     void showtable() {
         System.out.printf("%-5s %-10s %-10s %-7s %-7s %-10s %-10s %-10s\n", "ID", "Name", "ClassID", "Marks", "Age",
@@ -207,7 +209,7 @@ class studentmanagmentsystem {
             }
         }
     }
-
+// method to find students by filters
     void searchStudents(String gender, Integer age, Integer class_id, String city) {
         System.out.println("Search Results:");
 
@@ -229,7 +231,6 @@ class studentmanagmentsystem {
                 }
             }
 
-            // Apply filters
             boolean genderMatch = (gender == null || gender.equalsIgnoreCase(s.gender));
             boolean ageMatch = (age == null || s.age == age);
             boolean classMatch = (class_id == null || s.class_id == class_id);
@@ -256,6 +257,7 @@ class studentmanagmentsystem {
 public class Student_managment {
     public static void main(String[] args) {
         studentmanagmentsystem sms = new studentmanagmentsystem();
+        // sample test cases
         sms.addclass(new Class(1, "A"));
         sms.addclass(new Class(2, "B"));
         sms.addclass(new Class(3, "C"));
@@ -304,26 +306,36 @@ public class Student_managment {
 
         sms.addstudent(new Student(20, "stud20", 4, 78, "M", 12), Arrays.asList(new Address(12, 462002, "Indore", 20)));
 
+        // function prints whole table
         sms.showtable();
         System.out.println();
+        // prints rank
         sms.rank();
         System.out.println();
+        // returns students with city
         sms.findbycity("Indore");
         System.out.println();
+        // return students by id 
         sms.findbyclass(3);
         System.out.println();
+        // find by pincode
         sms.findbypincode(482002);
         System.out.println();
+        // return passed students
         sms.ispassed();
+        // returns failed students
         System.out.println();
         sms.failed();
         System.out.println();
+        // deletes students
         sms.deletestudent(1);
         sms.showtable();
         System.out.println();
+        // pagination marks and name for females
         sms.pagination_marks(1, 20);
         sms.pagination_name(1, 20);
-
+// filter for search according to gender age city class
         sms.searchStudents("M", null, 2, null);
     }
 }
+
