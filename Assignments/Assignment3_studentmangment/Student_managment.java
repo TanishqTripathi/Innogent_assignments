@@ -207,6 +207,50 @@ class studentmanagmentsystem {
             }
         }
     }
+
+    void searchStudents(String gender, Integer age, Integer class_id, String city) {
+        System.out.println("Search Results:");
+
+        for (Student s : students) {
+            // get student's addresses
+            List<Address> addrList = new ArrayList<>();
+            for (Address a : addresses) {
+                if (a.student_id == s.id) {
+                    addrList.add(a);
+                }
+            }
+
+            // get student's class name
+            String className = "";
+            for (Class c : classes) {
+                if (c.id == s.class_id) {
+                    className = c.name;
+                    break;
+                }
+            }
+
+            // Apply filters
+            boolean genderMatch = (gender == null || gender.equalsIgnoreCase(s.gender));
+            boolean ageMatch = (age == null || s.age == age);
+            boolean classMatch = (class_id == null || s.class_id == class_id);
+
+            if (addrList.isEmpty()) {
+                if (genderMatch && ageMatch && classMatch && (city == null)) {
+                    System.out.printf("%-5d %-10s %-5s %-5d %-5d %-5s %-10s %-10s\n",
+                            s.id, s.name, className, s.marks, s.age, s.gender, "N/A", "N/A");
+                }
+            } else {
+                for (Address a : addrList) {
+                    boolean cityMatch = (city == null || a.city.equalsIgnoreCase(city));
+
+                    if (genderMatch && ageMatch && classMatch && cityMatch) {
+                        System.out.printf("%-5d %-10s %-5s %-5d %-5d %-5s %-10s %-10d\n",
+                                s.id, s.name, className, s.marks, s.age, s.gender, a.city, a.pincode);
+                    }
+                }
+            }
+        }
+    }
 }
 
 public class Student_managment {
@@ -279,5 +323,7 @@ public class Student_managment {
         System.out.println();
         sms.pagination_marks(1, 20);
         sms.pagination_name(1, 20);
+
+        sms.searchStudents("M", null, 2, null);
     }
 }
