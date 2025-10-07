@@ -4,8 +4,8 @@ import java.util.Scanner;
 
 class pc_class {
     int n;
-    ArrayList<Integer> al = new ArrayList<>(n);
-    boolean stop;
+    ArrayList<Integer> al = new ArrayList<>(n); //bucket
+    boolean stop; //flag variable
 
     public pc_class(int n) {
         this.n = n;
@@ -20,6 +20,7 @@ class pc_class {
                     System.out.println("Bucket is full!!!");
                     wait();
                 }
+                // case to stop the execussion of both the threads when val reaches 10; 
                 if (value == 10) {
                     System.out.println("Execution stopped");
                     stop = true;
@@ -103,3 +104,4 @@ public class Producer_Consumer {
         t2.start();
     }
 }
+
