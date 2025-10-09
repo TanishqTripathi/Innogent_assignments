@@ -5,7 +5,7 @@ import java.util.concurrent.*;
 public class parallelvsexecutor {
 
     public static void main(String args[]) throws InterruptedException, ExecutionException {
-        int size = 1000000000;
+        int size = 100;
 
         long start = System.currentTimeMillis();
 
@@ -26,10 +26,13 @@ public class parallelvsexecutor {
         List<Future<Long>> future = new ArrayList<>();
 
         long start1 = System.currentTimeMillis();
+        System.out.println("Number of threads " + numthreads);
+        System.out.println("chunk size " + chunk_size);
 
         for (int i = 0; i < numthreads; i++) {
             int start2 = i * chunk_size;
             int end2 = (i == numthreads - 1) ? size : start2 + chunk_size;
+            System.out.println("Thread " + (i + 1) + " processing from " + start2 + " to " + (end2 - 1));
 
             future.add(executor.submit(() -> {
                 long localsum = 0;
