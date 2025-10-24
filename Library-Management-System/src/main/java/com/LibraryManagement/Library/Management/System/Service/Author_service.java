@@ -29,14 +29,11 @@ public class Author_service {
     private Books_dao booksdao;
 
     public AuthorDTO addAuthor(AuthorDTO authorDTO) {
-        // Debug log
         System.out.println("Received DTO: " + authorDTO);
 
-        // Create Author entity
         Author author = new Author();
         author.setAuthorname(authorDTO.getAuthorname());
 
-        // Create Books entities
         Set<Books> bookSet = authorDTO.getBooks().stream()
                 .map(title -> {
                     Books book = new Books();
@@ -49,10 +46,8 @@ public class Author_service {
 
         author.setBooks(bookSet);
 
-        // Save Author (and cascade save books if cascade is set)
         Author savedAuthor = authorDao.save(author);
 
-        // Convert saved entity back to DTO
         Set<String> savedBookTitles = savedAuthor.getBooks().stream()
                 .map(Books::getBookTitle)
                 .collect(Collectors.toSet());
@@ -80,3 +75,4 @@ public class Author_service {
     }
 
 }
+
