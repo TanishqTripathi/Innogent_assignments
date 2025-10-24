@@ -22,7 +22,6 @@ public class Library_Controller {
 
     private final LibraryService libraryService;
 
-    // Endpoint to borrow a book
     @PostMapping("/borrow")
     public ResponseEntity<String> borrowBook(@RequestBody BorrowRequest request) {
         libraryService.borrowBookByNames(request.getMemberName(), request.getBookTitle());
@@ -35,3 +34,4 @@ public class Library_Controller {
         return ResponseEntity.ok(bookStock);
     }
 }
+
