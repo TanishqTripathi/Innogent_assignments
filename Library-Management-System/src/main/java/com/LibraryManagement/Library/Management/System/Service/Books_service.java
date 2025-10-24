@@ -36,7 +36,6 @@ public class Books_service {
         book.setAuthors(author);
         Books savedBook = bookrepo.save(book);
 
-        // Return as DTO
         return new BooksDTO_author(
                 savedBook.getBookTitle(),
                 savedBook.getAuthors().getAuthorname(),
@@ -56,7 +55,6 @@ public class Books_service {
             BookDTO_member dto = new BookDTO_member();
             dto.setTitle(book.getBookTitle());
 
-            // Check if book has members
             if (book.getMembers() != null && !book.getMembers().isEmpty()) {
                 Set<String> memberNames = book.getMembers().stream()
                         .map(Members::getMembername) // get member name
@@ -69,3 +67,4 @@ public class Books_service {
     }
 
 }
+
