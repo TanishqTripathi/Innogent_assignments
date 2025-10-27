@@ -50,7 +50,7 @@ public class ArrayListvsLinkedList {
 
     public static void main(String[] args) {
 
-        int[] size = { 10000 };
+        int[] size = { 10000, 50000, 100000 };
         for (int n : size) {
             ArrayList<Integer> al = new ArrayList<>();
             LinkedList<Integer> ll = new LinkedList<>();
