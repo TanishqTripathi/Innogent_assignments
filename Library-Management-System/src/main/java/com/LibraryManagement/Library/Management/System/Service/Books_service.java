@@ -2,10 +2,8 @@ package com.LibraryManagement.Library.Management.System.Service;
 
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.LibraryManagement.Library.Management.System.DTO.BookDTO;
@@ -57,7 +55,7 @@ public class Books_service {
 
             if (book.getMembers() != null && !book.getMembers().isEmpty()) {
                 Set<String> memberNames = book.getMembers().stream()
-                        .map(Members::getMembername) // get member name
+                        .map(Members::getMembername)
                         .collect(Collectors.toSet());
                 dto.setMemberNames(memberNames);
             }
@@ -67,4 +65,3 @@ public class Books_service {
     }
 
 }
-

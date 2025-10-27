@@ -1,6 +1,7 @@
 // package Assignment3_studentmangment;
 
 import java.util.*;
+
 // 
 // classes Class,Address,Student
 class Class {
@@ -30,6 +31,7 @@ class Student {
         this.age = age;
     }
 }
+
 class Address {
     int id;
     int pincode;
@@ -73,7 +75,8 @@ class studentmanagmentsystem {
         students.add(s);
         addresses.addAll(a);
     }
-// Computes rank
+
+    // Computes rank
     void rank() {
         students.sort((s1, s2) -> s2.marks - s1.marks);
         int rank = 1;
@@ -87,7 +90,8 @@ class studentmanagmentsystem {
             }
         }
     }
-// finds by city 
+
+    // finds by city
     void findbycity(String city) {
         city = city.toLowerCase();
         if (city == null || city.isEmpty()) {
@@ -105,7 +109,8 @@ class studentmanagmentsystem {
             }
         }
     }
-// finds by pincode 
+
+    // finds by pincode
     void findbypincode(int pincode) {
         System.out.println("Students with pincode " + pincode + ": ");
         for (Address a : addresses) {
@@ -118,7 +123,8 @@ class studentmanagmentsystem {
             }
         }
     }
-// finds students by class id
+
+    // finds students by class id
     void findbyclass(int class_id) {
         System.out.println("Students in class id " + class_id + ": ");
         String x = null;
@@ -134,7 +140,8 @@ class studentmanagmentsystem {
             }
         }
     }
-// prints passed students
+
+    // prints passed students
     void ispassed() {
         System.out.println("Students who passed: ");
         for (Student s : students) {
@@ -143,7 +150,8 @@ class studentmanagmentsystem {
             }
         }
     }
-// prints failed students
+
+    // prints failed students
     void failed() {
         System.out.println("Students who failed: ");
         for (Student s : students) {
@@ -159,7 +167,8 @@ class studentmanagmentsystem {
         addresses.removeIf(a -> a.student_id == student_id);
         System.out.println("Student with id " + student_id + " deleted");
     }
-// pagination for marks
+
+    // pagination for marks
     void pagination_marks(int start, int end) {
         Collections.sort(students, (s1, s2) -> s2.marks - s1.marks);
         System.out.println("Students from index " + start + " to " + end + ": ");
@@ -171,7 +180,8 @@ class studentmanagmentsystem {
             }
         }
     }
-// return pagination according to names
+
+    // return pagination according to names
     void pagination_name(int start, int end) {
         Collections.sort(students, (s1, s2) -> s2.name.compareTo(s1.name));
         System.out.println("Students from index " + start + " to " + end + ": ");
@@ -179,7 +189,6 @@ class studentmanagmentsystem {
             Student s = students.get(i);
             System.out.println("Student Name: " + s.name + " Marks: " + s.marks);
         }
-
     }
     // method to print table
 
@@ -195,7 +204,6 @@ class studentmanagmentsystem {
                             addr.add(a);
                         }
                     }
-
                     if (addr.isEmpty()) {
                         System.out.printf("%-5d %-10s %-10s %-7d %-7d %-10s\n", s.id, s.name, c.name, s.marks, s.age,
                                 s.gender);
@@ -209,7 +217,8 @@ class studentmanagmentsystem {
             }
         }
     }
-// method to find students by filters
+
+    // method to find students by filters
     void searchStudents(String gender, Integer age, Integer class_id, String city) {
         System.out.println("Search Results:");
 
@@ -315,7 +324,7 @@ public class Student_managment {
         // returns students with city
         sms.findbycity("Indore");
         System.out.println();
-        // return students by id 
+        // return students by id
         sms.findbyclass(3);
         System.out.println();
         // find by pincode
@@ -334,8 +343,7 @@ public class Student_managment {
         // pagination marks and name for females
         sms.pagination_marks(1, 20);
         sms.pagination_name(1, 20);
-// filter for search according to gender age city class
+        // filter for search according to gender age city class
         sms.searchStudents("M", null, 2, null);
     }
 }
-

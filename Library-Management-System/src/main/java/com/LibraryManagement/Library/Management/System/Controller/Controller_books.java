@@ -2,7 +2,6 @@ package com.LibraryManagement.Library.Management.System.Controller;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,9 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.LibraryManagement.Library.Management.System.DTO.BookDTO;
-import com.LibraryManagement.Library.Management.System.DTO.BookDTO_member;
 import com.LibraryManagement.Library.Management.System.DTO.BooksDTO_author;
-import com.LibraryManagement.Library.Management.System.Model.Books;
 import com.LibraryManagement.Library.Management.System.Service.Books_service;
 
 import lombok.RequiredArgsConstructor;

@@ -12,6 +12,7 @@ public class fact_recc {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
+        sc.close();
         System.out.println(factorial(n));
     }
 }
@@ -33,4 +34,5 @@ public class fact_recc {
 // { Main()}
 // {int n, int i}
 
-// after this the stack memory is poped out after the method execution is completed
+// after this the stack memory is poped out after the method execution is
+// completed

@@ -1,7 +1,6 @@
 // Banking System with Deposit and Withdrawal Functionality
 // Using Interfaces, Abstract Classes, Inheritance, and Polymorphism
 // Interface Segregation Principle (ISP) and Liskov Substitution Principle (LSP) applied
-
 interface depositable {
     void deposit(double amount);
 }
@@ -62,16 +61,15 @@ class savingaccount extends account {
             setBalance(getBalance() - amount);
             System.out.println(amount + " withdrawn. Remaining Balance: " + getBalance());
         } else {
-            System.out.println("Insufficient balance! Required  " + MIN_BALANCE);
+            System.out.println("Insufficient balance! Required " + MIN_BALANCE);
         }
     }
 }
- 
-// 
-//   solid principles applied , open close principle, inheritance, polymorphism, overrriding and overloading both
+// solid principles applied , open close principle, inheritance, polymorphism,
+// overrriding and overloading both
 
 class currentaccount extends account {
-    private static final double OVERDRAFT_LIMIT = -1000;
+    private static final int OVERDRAFT_LIMIT = -1000;
 
     public currentaccount(String accountNumber, double balance) {
         super(accountNumber, balance);
