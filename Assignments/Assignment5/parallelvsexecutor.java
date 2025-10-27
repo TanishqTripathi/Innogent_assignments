@@ -2,7 +2,7 @@ import java.util.stream.*;
 import java.util.*;
 import java.util.concurrent.*;
 
-public class parallelvsexecutor {
+public class parallelvsExecutor {
 
     public static void main(String args[]) throws InterruptedException, ExecutionException {
         int size = 100;
